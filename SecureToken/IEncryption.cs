@@ -1,7 +1,7 @@
 ﻿
-namespace Security
+namespace SecureToken
 {
-    public interface IEncryptor
+    public interface IEncryption
     {
         byte[] Encrypt(byte[] plainBytes);
         byte[] Decrypt(byte[] cipherBytes);

@@ -3,9 +3,9 @@ using System.IO;
 using System.Security.Cryptography;
 
 
-namespace Security
+namespace SecureToken
 {
-    public class AesEncryptor : IEncryptor
+    public class AesEncryptor : IEncryption
     {
         private byte[] _key;
         private byte[] _initialVector;
@@ -13,6 +13,14 @@ namespace Security
 
         public AesEncryptor(byte[] key, byte[] iv)
         {
+            if(key.Length != 32)
+            {
+                throw new ArgumentException("Key must be 32 bytes.");
+            }
+            if(iv.Length != 16)
+            {
+                throw new ArgumentException("IV must be 32 bytes.");
+            }
             _key = key;
             _initialVector = iv;
             

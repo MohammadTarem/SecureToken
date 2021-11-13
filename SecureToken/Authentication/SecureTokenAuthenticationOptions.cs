@@ -1,10 +1,15 @@
-﻿using System;
-namespace SecureToken
+﻿using System.Text;
+using Microsoft.AspNetCore.Authentication;
+
+
+namespace SecureToken.Authentication
 {
-    public class SecureTokenAuthenticationOptions
+    public class SecureTokenAuthenticationOptions : AuthenticationSchemeOptions
     {
-        public SecureTokenAuthenticationOptions()
-        {
-        }
+        
+        public SecureTokenOptions TokenOptions { get; set; }
+
+        public string  AuthenticationHeader { get; set; }
+        
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace Security
+﻿namespace SecureToken
 {
     public interface ISigner
     {

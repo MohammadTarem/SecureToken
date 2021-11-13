@@ -1,7 +1,6 @@
-﻿using System;
-using System.Security.Cryptography;
+﻿using System.Security.Cryptography;
 
-namespace Security
+namespace SecureToken
 {
     public static class SecureRandomBytes
     {

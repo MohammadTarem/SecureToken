@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Security.Cryptography;
 
-namespace Security
+namespace SecureToken
 {
     public class SHA512Signer : ISigner
     {
@@ -9,10 +9,14 @@ namespace Security
 
         public SHA512Signer(byte[] hashKey)
         {
+            if(hashKey.Length != 64)
+            {
+                throw new ArgumentException("Hash key length must be 64 bytes.");
+            }
             _hashKey = hashKey;
         }
 
-        public SHA512Signer(string base64) : this(Convert.FromBase64String(base64))
+        public SHA512Signer(string base64HashKey) : this(Convert.FromBase64String(base64HashKey))
         {
 
         }

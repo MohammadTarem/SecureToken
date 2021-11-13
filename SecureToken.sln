@@ -5,6 +5,10 @@ VisualStudioVersion = 16.0.810.10
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SecureToken", "SecureToken\SecureToken.csproj", "{A580C041-5B97-4C09-8780-BF4E1A4ADF79}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthWithSecureToken", "AuthWithSecureToken\AuthWithSecureToken.csproj", "{B8B072C5-3C78-43EA-9CAA-5357BCB3C118}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SecureTokenTests", "SecureTokenTests\SecureTokenTests.csproj", "{D13E3C5C-9A51-47EA-922B-066647E66D22}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{A580C041-5B97-4C09-8780-BF4E1A4ADF79}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A580C041-5B97-4C09-8780-BF4E1A4ADF79}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A580C041-5B97-4C09-8780-BF4E1A4ADF79}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B8B072C5-3C78-43EA-9CAA-5357BCB3C118}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8B072C5-3C78-43EA-9CAA-5357BCB3C118}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8B072C5-3C78-43EA-9CAA-5357BCB3C118}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8B072C5-3C78-43EA-9CAA-5357BCB3C118}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D13E3C5C-9A51-47EA-922B-066647E66D22}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D13E3C5C-9A51-47EA-922B-066647E66D22}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D13E3C5C-9A51-47EA-922B-066647E66D22}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D13E3C5C-9A51-47EA-922B-066647E66D22}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

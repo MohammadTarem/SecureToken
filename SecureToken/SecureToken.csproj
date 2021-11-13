@@ -2,6 +2,28 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <PackageId>SecureToken</PackageId>
+    <Version>1.0.0</Version>
+    <Authors>Mohammad Tarem</Authors>
+    <Company>SharkSoft</Company>
+    <Title>Secure Token</Title>
+    <Description>An easy way to create secure tokens with signature.</Description>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="Microsoft.AspNetCore.Authentication" />
+    <None Remove="Newtonsoft.Json" />
+    <None Remove="Authentication\" />
+    <None Remove="Microsoft.IdentityModel.Tokens" />
+    <None Remove="Authorization\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication" Version="2.2.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="6.14.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Authentication\" />
+    <Folder Include="Authorization\" />
+  </ItemGroup>
 </Project>
