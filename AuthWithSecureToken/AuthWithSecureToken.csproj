@@ -10,6 +10,6 @@
     <None Remove="SecureToken" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="SecureToken" Version="1.0.0" />
+    <PackageReference Include="SecureToken" Version="1.0.1" />
   </ItemGroup>
 </Project>

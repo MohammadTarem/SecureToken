@@ -3,11 +3,14 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <PackageId>SecureToken</PackageId>
-    <Version>1.0.0</Version>
+    <Version>1.0.1</Version>
     <Authors>Mohammad Tarem</Authors>
     <Company>SharkSoft</Company>
     <Title>Secure Token</Title>
     <Description>An easy way to create secure tokens with signature.</Description>
+    <RepositoryUrl>https://github.com/MohammadTarem/SecureToken</RepositoryUrl>
+    <RespositoryType>git</RespositoryType>
+    <PackageProjectUrl>https://github.com/MohammadTarem/SecureToken</PackageProjectUrl>
   </PropertyGroup>
 
   <ItemGroup>
