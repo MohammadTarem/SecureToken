@@ -7,7 +7,7 @@
     <Authors>Mohammad Tarem</Authors>
     <Company>SharkSoft</Company>
     <Title>Secure Token</Title>
-    <Description>An easy way to create secure tokens with signature.</Description>
+    <Description>An easy way to create secure tokens with signature and secure your APIs.</Description>
     <RepositoryUrl>https://github.com/MohammadTarem/SecureToken</RepositoryUrl>
     <RespositoryType>git</RespositoryType>
     <PackageProjectUrl>https://github.com/MohammadTarem/SecureToken</PackageProjectUrl>
