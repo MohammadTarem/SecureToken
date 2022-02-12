@@ -21,19 +21,20 @@ namespace AuthWithSecureToken
         public void ConfigureServices(IServiceCollection services)
         {
 
-            
 
-        
+
+            var rsa = new System.Security.Cryptography.RSACryptoServiceProvider(4096);
 
             services.AddControllers();
             services.AddAuthentication(SecureTokenDefaults.AuthenticationScheme)
             .AddSecureTokenAuthentication
             (config =>
                {
-                   config.Encryptor = new AesEncryptor(SecureRandomBytes.Generate(32),
-                                                       SecureRandomBytes.Generate(16));
+                   //config.Encryptor = new AesEncryptor(SecureRandomBytes.Generate(32),
+                   //                                    SecureRandomBytes.Generate(16));
 
-                   config.Signer = new SHA512Signer(SecureRandomBytes.Generate(64));
+                   config.Encryptor = new RsaEncryptor(rsa.ToXmlString(true));
+                   config.Signer = new PBKDF2Signer(SecureRandomBytes.Generate(64), 128, 10000);
                }
             , "Token")
             .AddCookie();

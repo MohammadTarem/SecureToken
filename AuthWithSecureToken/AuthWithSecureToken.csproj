@@ -10,6 +10,8 @@
     <None Remove="SecureToken" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="SecureToken" Version="1.0.1" />
+    <ProjectReference Include="..\SecureToken\SecureToken.csproj">
+      <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
+    </ProjectReference>
   </ItemGroup>
 </Project>
