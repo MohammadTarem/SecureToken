@@ -1,6 +1,6 @@
 ﻿# Secure Token
 
-This library provides an easy way (without bleeding) to encrypt claims and sign them. 
+This library provides an easy way (without bleeding) for encrypting claims with signiture and securing server APIs. 
 
 The diffrence between this mechanism and other systems is in the freedom of choosing a custom encryption and hashing algorithms.
 
@@ -48,6 +48,12 @@ if(cert.IsValid)
 ## AesEncryptor and SHA512Signer
 These two classes implement IEncryption and ISigner respectively. Any custom implementation could be used instead.
 
+## PBKDF2 Signer
+For longer and more secure signature this signer has been added with at least 10000 iterations and 128 byes length.
+
+## RsaEncryptor
+This class implements IEncryption and enable asymmetric encryption based on RSA algorithm. Minimum key size is 4098 bits.
+
 ## Authetication Handler
 The library extends AuthenticationBuilder class and provides easy inegration with Asp.netcore dependency injection.
 
@@ -76,6 +82,12 @@ services.AddAuthentication(SecureTokenDefaults.AuthenticationScheme)
 //        config.Signer = new SHA512Signer(base64HashKey);
 //    }
 //, "Token");
+
+// RSA Encryption
+// config.Encryptor = new RsaEncryptor(rsa.ToXmlString(true));
+
+// PBKDF2 signer
+// config.Signer = new PBKDF2Signer(SecureRandomBytes.Generate(64), 128, 10000);
 
 
 ```
