@@ -26,18 +26,16 @@ namespace AuthWithSecureToken
             var rsa = new System.Security.Cryptography.RSACryptoServiceProvider(4096);
 
             services.AddControllers();
-            services.AddAuthentication(SecureTokenDefaults.AuthenticationScheme)
-            .AddSecureTokenAuthentication
-            (config =>
+            services.AddSecureTokenAuthentication(
+            config =>
                {
-                   //config.Encryptor = new AesEncryptor(SecureRandomBytes.Generate(32),
-                   //                                    SecureRandomBytes.Generate(16));
-
-                   config.Encryptor = new RsaEncryptor(rsa.ToXmlString(true));
+                   config.Encryptor = new AesEncryptor(SecureRandomBytes.Generate(32),
+                                                       SecureRandomBytes.Generate(16));
+                   
                    config.Signer = new PBKDF2Signer(SecureRandomBytes.Generate(64), 128, 10000);
                }
-            , "Token")
-            .AddCookie();
+            , "Token");
+            
 
 
         }
