@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <PackageId>SecureToken</PackageId>
-    <Version>1.0.2</Version>
+    <Version>1.0.4</Version>
     <Authors>Mohammad Tarem</Authors>
     <Company>SharkSoft</Company>
     <Title>Secure Token</Title>
@@ -11,6 +11,10 @@
     <RepositoryUrl>https://github.com/MohammadTarem/SecureToken</RepositoryUrl>
     <RespositoryType>git</RespositoryType>
     <PackageProjectUrl>https://github.com/MohammadTarem/SecureToken</PackageProjectUrl>
+    <Copyright>Mohammad Tarem</Copyright>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageLicenseFile>License.md</PackageLicenseFile>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>
@@ -30,5 +34,15 @@
   <ItemGroup>
     <Folder Include="Authentication\" />
     <Folder Include="Authorization\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\License.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
   </ItemGroup>
 </Project>
