@@ -2,8 +2,6 @@
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.Extensions.DependencyInjection;
 
-using SecureToken.Authentication;
-
 namespace SecureToken.Authentication
 {
     public static class SecureTokenAuthenticationExtensions
