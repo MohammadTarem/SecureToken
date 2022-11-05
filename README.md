@@ -69,7 +69,24 @@ services.AddAuthentication(SecureTokenDefaults.AuthenticationScheme)
 
         config.Signer = new SHA512Signer(SecureRandomBytes.Generate(64));
     }
-, "Token"); // Default is Authorization
+, "Token")
+.AddCookie(); // Default is Authorization
+
+//or
+
+services.AddSecureTokenAuthentication(
+config =>
+   {
+       config.Encryptor = new AesEncryptor(SecureRandomBytes.Generate(32),
+                                           SecureRandomBytes.Generate(16));
+
+       config.Signer = new PBKDF2Signer(SecureRandomBytes.Generate(64), 128, 10000);
+   }
+, "Token");
+
+
+            
+            
 
 // Inject as base64 string using environment variables
 // services.AddAuthentication(SecureTokenDefaults.AuthenticationScheme)
