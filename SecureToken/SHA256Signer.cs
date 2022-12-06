@@ -5,7 +5,7 @@ namespace SecureToken
 {
     public class SHA256Signer : ISigner
     {
-        private byte[] _hashKey;
+        private readonly byte[] _hashKey;
 
         public SHA256Signer(byte[] hashKey)
         {

@@ -5,11 +5,11 @@ namespace SecureToken
 {
     public class SHA512Signer : ISigner
     {
-        private byte[] _hashKey;
+        private readonly byte[] _hashKey;
 
         public SHA512Signer(byte[] hashKey)
         {
-            if(hashKey.Length != 64)
+            if (hashKey.Length != 64)
             {
                 throw new ArgumentException("Hash key length must be 64 bytes.");
             }
@@ -23,10 +23,8 @@ namespace SecureToken
 
         public byte[] Hash(byte[] plainBytes)
         {
-            using (HMACSHA512 hash = new HMACSHA512(_hashKey))
-            {
-                return hash.ComputeHash(plainBytes);
-            }
+            using HMACSHA512 hash = new HMACSHA512(_hashKey);
+            return hash.ComputeHash(plainBytes);
 
         }
     }

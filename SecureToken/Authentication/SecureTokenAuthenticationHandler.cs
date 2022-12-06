@@ -1,18 +1,18 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
+using System;
 using System.Linq;
 using System.Security.Claims;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 
 namespace SecureToken.Authentication
 {
     public class SecureTokenAuthenticationHandler : AuthenticationHandler<SecureTokenAuthenticationOptions>
     {
         public SecureTokenAuthenticationHandler(IOptionsMonitor<SecureTokenAuthenticationOptions> options, ILoggerFactory logger, UrlEncoder urlEnc, ISystemClock clock)
-            :base(options, logger, urlEnc, clock)
+            : base(options, logger, urlEnc, clock)
         {
 
         }
@@ -22,14 +22,14 @@ namespace SecureToken.Authentication
             string header = String.IsNullOrEmpty(Options.AuthenticationHeader) ?
                                        "Authorization" : Options.AuthenticationHeader;
 
-            if(!Request.Headers.ContainsKey(header))
+            if (!Request.Headers.ContainsKey(header))
             {
                 return Task.FromResult(AuthenticateResult.NoResult());
             }
 
             var token = Request.Headers[header].ToString();
             var cert = Token.CreateCertificate(token, Options.TokenOptions);
-            if(cert == null || !cert.IsValid)
+            if (cert == null || !cert.IsValid)
             {
                 return Task.FromResult(AuthenticateResult.Fail("Invalid token"));
             }

@@ -1,6 +1,4 @@
-﻿using System;
-using System.Text;
-namespace SecureToken
+﻿namespace SecureToken
 {
     public class SecureTokenOptions
     {

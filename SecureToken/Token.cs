@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Text;
-using Microsoft.IdentityModel.Tokens;
 
 namespace SecureToken
 {
@@ -17,7 +17,7 @@ namespace SecureToken
             var plainBytes = Encoding.UTF8.GetBytes(jsonString);
             var cipherBytes = options.Encryptor.Encrypt(plainBytes);
             var signature = options.Signer.Hash(plainBytes);
-            
+
             return $"{Base64UrlEncoder.Encode(cipherBytes)}.{Base64UrlEncoder.Encode(signature)}";
         }
 
@@ -30,8 +30,8 @@ namespace SecureToken
             }
 
             try
-            {   
-                var cipherBytes =  Base64UrlEncoder.DecodeBytes(token[0]);
+            {
+                var cipherBytes = Base64UrlEncoder.DecodeBytes(token[0]);
                 var signatureBytes = Base64UrlEncoder.DecodeBytes(token[1]);
                 var plainBytes = options.Encryptor.Decrypt(cipherBytes);
                 var expectedSignatureBytes = options.Signer.Hash(plainBytes);
@@ -94,6 +94,6 @@ namespace SecureToken
             }
 
         }
-        
+
     }
 }

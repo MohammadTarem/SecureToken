@@ -1,6 +1,6 @@
-﻿using System;
-using Microsoft.AspNetCore.Authentication;
+﻿using Microsoft.AspNetCore.Authentication;
 using Microsoft.Extensions.DependencyInjection;
+using System;
 
 namespace SecureToken.Authentication
 {
@@ -12,7 +12,7 @@ namespace SecureToken.Authentication
             services.AddAuthentication(SecureTokenDefaults.AuthenticationScheme)
                     .AddSecureTokenAuthentication(config, authenticationHeader);
         }
-        public static AuthenticationBuilder AddSecureTokenAuthentication(this AuthenticationBuilder builder,Action<SecureTokenOptions> config, string authenticationHeader = "Authorization")
+        public static AuthenticationBuilder AddSecureTokenAuthentication(this AuthenticationBuilder builder, Action<SecureTokenOptions> config, string authenticationHeader = "Authorization")
         {
             var sOptions = new SecureTokenOptions { };
             config(sOptions);

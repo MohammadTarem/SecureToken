@@ -5,7 +5,7 @@ namespace SecureToken
 {
     public class SHA384Signer : ISigner
     {
-        private byte[] _hashKey;
+        private readonly byte[] _hashKey;
 
         public SHA384Signer(byte[] hashKey)
         {
@@ -23,11 +23,8 @@ namespace SecureToken
 
         public byte[] Hash(byte[] plainBytes)
         {
-            using (HMACSHA384 hash = new HMACSHA384(_hashKey))
-            {
-                return hash.ComputeHash(plainBytes);
-            }
-
+            using HMACSHA384 hash = new HMACSHA384(_hashKey);
+            return hash.ComputeHash(plainBytes);
         }
     }
 }

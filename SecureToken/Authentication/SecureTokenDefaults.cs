@@ -1,5 +1,4 @@
-﻿using System;
-namespace SecureToken.Authentication
+﻿namespace SecureToken.Authentication
 {
     public static class SecureTokenDefaults
     {

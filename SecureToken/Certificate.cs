@@ -11,9 +11,9 @@ namespace SecureToken
 
 
         public string Identifier { get; protected set; }
-        public string Issuer { get; protected set;}
-        
-        public IEnumerable<KeyValuePair<string, string>> Claims  { get; set; }
+        public string Issuer { get; protected set; }
+
+        public IEnumerable<KeyValuePair<string, string>> Claims { get; set; }
 
         public Certificate(string identifier, string issuer,
             IEnumerable<KeyValuePair<string, string>> claims, DateTime validFrom, DateTime expiresAt)
@@ -22,14 +22,14 @@ namespace SecureToken
             Issuer = issuer;
             ValidFrom = validFrom;
             ExpiresAt = expiresAt;
-            Claims = claims ==  null ? new List<KeyValuePair<string, string>>() : claims;
+            Claims = claims ?? new List<KeyValuePair<string, string>>();
         }
 
         public Certificate(string identifier, string issuer,
             IEnumerable<KeyValuePair<string, string>> claims, DateTime validFrom, TimeSpan duration)
                 : this(identifier, issuer, claims, validFrom, validFrom.Add(duration)) { }
 
-        public bool IsValid 
+        public bool IsValid
         {
             get
             {

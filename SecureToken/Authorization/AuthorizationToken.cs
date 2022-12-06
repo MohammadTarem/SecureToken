@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Security.Claims;
-using SecureToken;
 using System.Linq;
+using System.Security.Claims;
 
 namespace SecureToken.Authorization
 {
@@ -10,7 +9,7 @@ namespace SecureToken.Authorization
     {
 
         public static string Issue(string userName,
-            string identifier , string issuer , IEnumerable<KeyValuePair<string, string>> claims ,
+            string identifier, string issuer, IEnumerable<KeyValuePair<string, string>> claims,
             DateTime validFrom, TimeSpan duration, SecureTokenOptions options)
         {
 

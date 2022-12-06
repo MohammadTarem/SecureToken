@@ -7,30 +7,30 @@ namespace SecureToken
 {
     public class AesEncryptor : IEncryption
     {
-        private byte[] _key;
-        private byte[] _initialVector;
-        
+        private readonly byte[] _key;
+        private readonly byte[] _initialVector;
+
 
         public AesEncryptor(byte[] key, byte[] iv)
         {
-            if(key.Length != 32)
+            if (key.Length != 32)
             {
                 throw new ArgumentException("Key must be 32 bytes.");
             }
-            if(iv.Length != 16)
+            if (iv.Length != 16)
             {
                 throw new ArgumentException("IV must be 32 bytes.");
             }
             _key = key;
             _initialVector = iv;
-            
+
         }
 
         public AesEncryptor(string base64Key, string base64IV)
             : this(Convert.FromBase64String(base64Key),
                   Convert.FromBase64String(base64IV))
         { }
-       
+
         public byte[] Encrypt(byte[] plainBytes)
         {
             using (Aes aes = Aes.Create())
