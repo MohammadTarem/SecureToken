@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Security.Cryptography;
+using System.Text;
 
 namespace SecureToken
 {
@@ -25,6 +26,22 @@ namespace SecureToken
         {
             using HMACSHA512 hash = new HMACSHA512(_hashKey);
             return hash.ComputeHash(plainBytes);
+
+        }
+
+        public static string PasswordHasher(string password, string base64StringKey)
+        {
+            if(String.IsNullOrEmpty(password))
+            {
+                return String.Empty;
+            }
+
+            var signer = new SHA512Signer(base64StringKey);
+            return Convert
+                   .ToBase64String
+                   (
+                       signer.Hash(UnicodeEncoding.UTF8.GetBytes(password))
+                   );
 
         }
     }
