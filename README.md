@@ -70,7 +70,7 @@ services.AddAuthentication(SecureTokenDefaults.AuthenticationScheme)
         config.Signer = new SHA512Signer(SecureRandomBytes.Generate(64));
     }
 , "Token")
-.AddCookie(); // Default is Authorization
+.AddCookie(); 
 
 //or
 
@@ -119,6 +119,15 @@ var token = AuthorizationToken.Issue(name, claims, DateTime.Now, TimeSpan.FromSe
 
 ```
 
+## Password Hasher 
+A static method added to hash password using SHA512 and PBKDF2 method with some default configuration.
+
+```
+string hash = SHA512Signer.PasswordHasher(password, key);
+
+string hash2 = PBKDF2Signer.PasswordHasher(password, key);
+
+```
 
 
 
