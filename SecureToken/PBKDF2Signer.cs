@@ -33,5 +33,18 @@ namespace SecureToken
                                         keys, KeyDerivationPrf.HMACSHA512,
                                         iterations, outputLength);
         }
+
+        public static string PasswordHasher(string password, string base64StringKey)
+        {
+            return Convert.ToBase64String
+                (
+                    KeyDerivation.Pbkdf2(password,
+                                         Convert.FromBase64String(base64StringKey), 
+                                         KeyDerivationPrf.HMACSHA512,
+                                         10000, 128)
+                );
+        }
+
+    
     }
 }
