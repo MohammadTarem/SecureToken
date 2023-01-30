@@ -1,4 +1,5 @@
 ﻿using SecureToken;
+using System;
 using System.Linq;
 using Xunit;
 namespace SecureTokenTests
@@ -34,6 +35,19 @@ namespace SecureTokenTests
             var hash2 = signer.Hash(message);
 
             Assert.True(hash1.SequenceEqual(hash2));
+
+        }
+
+        [Fact]
+        public void PasswordHasher_Must_Return_Same_Results()
+        {
+            var password = "MyStr0ngP@ssw0rd";
+            var key = Convert.ToBase64String(SecureRandomBytes.Generate(64));
+            
+            var hash1 = PBKDF2Signer.PasswordHasher(password, key);
+            var hash2 = PBKDF2Signer.PasswordHasher(password, key);
+
+            Assert.Equal(hash1, hash2);
 
         }
     }

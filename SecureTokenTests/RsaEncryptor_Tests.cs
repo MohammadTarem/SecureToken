@@ -17,7 +17,7 @@ namespace SecureTokenTests
         public void RsaEncryptor_Must_Encrypt_Decrypt()
         {
 
-            RSACryptoServiceProvider r = new RSACryptoServiceProvider();
+            RSACryptoServiceProvider r = new RSACryptoServiceProvider(4096);
 
             RsaEncryptor rsa = new RsaEncryptor(r.ToXmlString(true));
             var message = SecureRandomBytes.Generate(10);
@@ -34,7 +34,8 @@ namespace SecureTokenTests
         public void RsaEncryptor_Must_Encrypt_Decrypt_With_Param_Constructor()
         {
 
-            RSACryptoServiceProvider r = new RSACryptoServiceProvider();
+            RSACryptoServiceProvider r = new RSACryptoServiceProvider(4096);
+            
 
             RsaEncryptor rsa = new RsaEncryptor(r.ExportParameters(true));
             var message = SecureRandomBytes.Generate(10);
