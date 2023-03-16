@@ -55,38 +55,9 @@ For longer and more secure signature this signer has been added with at least 10
 This class implements IEncryption and enable asymmetric encryption based on RSA algorithm. Minimum key size is 4098 bits.
 
 ## Authetication Handler
-The library extends AuthenticationBuilder class and provides easy inegration with Asp.netcore dependency injection.
+The library extends AuthenticationBuilder class and provides easy integration with AspNetCore dependency injection.
 
-
-```
-// using SecureToken.Authentication;
-services.AddAuthentication(SecureTokenDefaults.AuthenticationScheme)
-.AddSecureTokenAuthentication
-(config =>
-    {
-        config.Encryptor = new AesEncryptor(SecureRandomBytes.Generate(32),
-                                            SecureRandomBytes.Generate(16));
-
-        config.Signer = new SHA512Signer(SecureRandomBytes.Generate(64));
-    }
-, "Token")
-.AddCookie(); 
-
-//or
-
-services.AddSecureTokenAuthentication(
-config =>
-   {
-       config.Encryptor = new AesEncryptor(SecureRandomBytes.Generate(32),
-                                           SecureRandomBytes.Generate(16));
-
-       config.Signer = new PBKDF2Signer(SecureRandomBytes.Generate(64), 128, 10000);
-   }
-, "Token");
-
-
-            
-            
+```         
 
 // Inject as base64 string using environment variables
 // services.AddAuthentication(SecureTokenDefaults.AuthenticationScheme)
@@ -106,8 +77,9 @@ config =>
 // PBKDF2 signer
 // config.Signer = new PBKDF2Signer(SecureRandomBytes.Generate(64), 128, 10000);
 
-
 ```
+
+
 
 ## Issue Authorization Token
 The authentication handler adds TokenOptions to Asp.netcore dependency injection collection.
@@ -119,7 +91,11 @@ var token = AuthorizationToken.Issue(name, claims, DateTime.Now, TimeSpan.FromSe
 
 ```
 
-## Password Hasher 
+
+
+## Version 1.0.5 
+**Password Hasher**
+
 A static method added to hash password using SHA512 and PBKDF2 method with some default configuration.
 
 ```
@@ -128,6 +104,65 @@ string hash = SHA512Signer.PasswordHasher(password, key);
 string hash2 = PBKDF2Signer.PasswordHasher(password, key);
 
 ```
+
+
+## Version 1.0.6
+In this version, I overrided the authentication method now it can be used in three ways
+
+## SecureToken Authenticaion Only
+
+```
+services.AddSecureTokenAuthentication(
+config =>
+   {
+       config.Encryptor = new AesEncryptor(SecureRandomBytes.Generate(32),
+                                           SecureRandomBytes.Generate(16));
+
+       config.Signer = new PBKDF2Signer(SecureRandomBytes.Generate(64), 128, 10000);
+   }
+, "Token");
+
+```
+
+
+## SecureToken Authenticaion With Cookies Authentication
+
+```
+services.AddSecureTokenAuthentication(config => 
+{
+    config.Encryptor = new AesEncryptor(SecureRandomBytes.Generate(32),
+                                                    SecureRandomBytes.Generate(16));
+
+    config.Signer = new PBKDF2Signer(SecureRandomBytes.Generate(64), 128, 10000);
+
+}, CookieAuthenticationDefaults.AuthenticationScheme, "Token")
+.AddCookie(options => 
+{ 
+     options.LoginPath = "/login";
+});
+
+```
+
+
+## SecureToken With Other Authentication Schemes
+
+```
+// using SecureToken.Authentication;
+services.AddAuthentication(SecureTokenDefaults.AuthenticationScheme)
+.AddSecureTokenAuthentication
+(config =>
+    {
+        config.Encryptor = new AesEncryptor(SecureRandomBytes.Generate(32),
+                                            SecureRandomBytes.Generate(16));
+
+        config.Signer = new SHA512Signer(SecureRandomBytes.Generate(64));
+    }
+, "Token")
+//.AddCookie(); 
+//.AddPolicyScheme(); // With selector to choose between schemes
+
+```
+
 
 
 
