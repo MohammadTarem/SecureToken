@@ -19,10 +19,9 @@ namespace SecureToken.Authentication
 
         protected override Task<AuthenticateResult> HandleAuthenticateAsync()
         {
-            string header = String.IsNullOrEmpty(Options.AuthenticationHeader) ?
-                                       "Authorization" : Options.AuthenticationHeader;
+            string header = Options.AuthenticationHeader;
 
-            if (!Request.Headers.ContainsKey(header))
+            if (String.IsNullOrEmpty(header) || !Request.Headers.ContainsKey(header))
             {
                 return Task.FromResult(AuthenticateResult.NoResult());
             }
