@@ -1,13 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.810.10
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33502.453
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SecureToken", "SecureToken\SecureToken.csproj", "{A580C041-5B97-4C09-8780-BF4E1A4ADF79}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SecureToken", "SecureToken\SecureToken.csproj", "{A580C041-5B97-4C09-8780-BF4E1A4ADF79}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthWithSecureToken", "AuthWithSecureToken\AuthWithSecureToken.csproj", "{B8B072C5-3C78-43EA-9CAA-5357BCB3C118}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuthWithSecureToken", "AuthWithSecureToken\AuthWithSecureToken.csproj", "{B8B072C5-3C78-43EA-9CAA-5357BCB3C118}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SecureTokenTests", "SecureTokenTests\SecureTokenTests.csproj", "{D13E3C5C-9A51-47EA-922B-066647E66D22}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SecureTokenTests", "SecureTokenTests\SecureTokenTests.csproj", "{D13E3C5C-9A51-47EA-922B-066647E66D22}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
